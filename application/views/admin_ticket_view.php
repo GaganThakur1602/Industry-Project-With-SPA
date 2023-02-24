@@ -1,0 +1,46 @@
+
+    <div class="container mt-5" style="padding-left: 30vw;">
+        Search : <input type="text" ng-model="search.Ticket_status" placeholder="Search By Status"/>
+    </div>
+    <div>
+        <select ng-model="search.Ticket_status">
+            <option value="1" >To-Do</option>
+            <option value="2">In-Progress</option>
+            <option value="3" >Under Review</option>
+            <option value="4">Soon to be Resolved</option>
+            <option value="5" >Resolved</option>
+        </select>
+    </div>
+    <div class="container mt-3" ng-controller="adminTicketsController" ng-init="showTicketsAdmin()">
+    <table id='display_table' class='table'>
+            <thead>
+            <tr>
+                <th scope='col'>Ticket_id</th>
+                <th scope='col'>Customer_id</th>
+                <th scope='col'>Ticket_Description</th>
+                <th scope='col'>Ticket_Status</th>
+                <th scope='col'>Ticket_Time</th>
+                <th scope='col'>Attachment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in rdata | filter:search">
+                    <td scope='row'>{{x.Ticket_id}}</td>
+                    <td scope='row'>{{x.Customer_id}}</td>
+                    <td colspan='1'>{{x.Ticket_description}}</td>
+                    <td ng-if="x.Ticket_status==1">To-Do</td>
+                    <td ng-if="x.Ticket_status==2">In - Progress</td>
+                    <td ng-if="x.Ticket_status==3">Under Review</td>
+                    <td ng-if="x.Ticket_status==4">Soon to be Resolved</td>
+                    <td ng-if="x.Ticket_status==5">Resolved</td>
+                    <td>{{x.Time | date : "dd.MM.y"}}</td>
+                    <td ng-if="x.Ticket_file!=''"><a href= './Customer_uploads/{{x.Ticket_file}}' target='_blank' style="color:orangered;Text-Decoration:none;">View Attachment</a></td>
+                    <td ng-if="!(x.Ticket_file!='')">No Attachment</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+
+</body>
+</html>

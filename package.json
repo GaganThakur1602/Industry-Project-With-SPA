@@ -1,0 +1,25 @@
+{
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.58.3"
+  },
+  "name": "angular_ci",
+  "description": "Open Source PHP Framework (originally from EllisLab)",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/GaganThakur1602/Industry_Project_With_CI_Framework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GaganThakur1602/Industry_Project_With_CI_Framework/issues"
+  },
+  "homepage": "https://github.com/GaganThakur1602/Industry_Project_With_CI_Framework#readme"
+}

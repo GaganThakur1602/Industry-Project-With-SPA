@@ -1,0 +1,31 @@
+
+<body ng-controller="adminLoginController">
+    <div class="container" style="width:33vw;height:35vh">
+        <div class="container_admin">
+        <h1 style="text-align:center;">Admin service desk Login</h1>
+        <!-- <form method="post" action="admin_validation.php"> -->
+            <form name="userLogin">
+                <div>
+                    <span class="error" ng-show="userLogin.c_email.$error.required">
+                        Required!</span>
+                    <span class="error" ng-show="userLogin.c_email.$error.email">
+                        Not valid email!</span>
+                </div>
+                    <input type="email" placeholder="Email Address" id="email" name="a_email" ng-model="email" required>
+                <div>
+                    <span class="error" ng-show="userLogin.c_password.$error.required">
+                        Required!</span>
+
+                </div>
+                    <input id = "password" type="password" placeholder="Password"  name="a_password" ng-model="password" required>
+                    <br>
+
+                    <div>
+                        <input type="submit" value="Log In" class="primary" ng-click="validateAdmin(email,password)" style="text-align: center;">
+                    </div>
+            
+                </form>
+        </div>
+    </div>
+</body>
+</html>

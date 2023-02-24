@@ -1,0 +1,87 @@
+
+<div class="grid-container">
+
+    <div class="item3">
+        <div style="font-size:16px; font-family:Arial,sans-serif;margin-left:200px;margin-top:10px">Home  /  Sign In</div>
+    </div>  
+
+    <div class="item4">
+        <form>
+            <input type="search" placeholder="Search articles" class="articles" style="height:4vh">
+            <button type="submit" name="search" class="search_btn">Search</button>
+          </form>
+    </div>
+  
+    <div class="item5" ng-controller="userLoginController">
+        <div>
+            <h2>Already a member?</h2>
+            <p>Sign In</p>
+            <form name="userLogin">
+            <div>
+                <span class="error" ng-show="userLogin.c_email.$error.required">
+                    Required!</span>
+                <span class="error" ng-show="userLogin.c_email.$error.email">
+                    Not valid email!</span>
+            </div>
+                <input type="email" placeholder="Email Address" name="c_email" id="email" ng-model="userEmail" required>
+            <div>
+                <span class="error" ng-show="userLogin.c_password.$error.required">
+                    Required!</span>
+
+            </div>
+                <input id = "password" type="password" placeholder="Password"  name="c_password" ng-model="userPassword" required>
+                <br>
+
+                <div>
+                    <input type="checkbox" class="remember" name="remember" >Remember me
+                    <input type="submit" value="Sign In" class="primary" ng-click="validateUser(userEmail,userPassword)" style="text-align: center;">
+                </div>
+        
+            </form>
+            <div ng-if="verifyEmail"><h3>Please Verify Your Email</h3></div>
+        </div>
+    
+    
+    </div>
+    <div class="item6">
+        <div class="container1">
+
+                <div>
+                    <img src="images/user.png" style="width:80px;margin-top:35px;">
+                </div>
+                <div style="flex-shrink: 2;align-self: center;"id="sign_up">
+                    New User? <a href='service/customer_sign_up' color="red">Sign Up</a><br>
+                    Create an account to submit tickets, read articles and engage in our community.
+                </div>
+
+        </div>
+        <div class="container2">
+            
+                <div>
+                    <img src="images/forgot_password.png" style="height:80px; width:80px; ">
+                </div>
+                <div style="flex-shrink: 2; align-self: center;"id="reset">
+
+                    Forgot Password? <a href='a.html' color="red">Reset</a><br>
+                    We will send a password reset link to your email address.
+                </div>
+            
+            
+        </div>
+        <div class="container3">
+            
+
+                <div>
+                    <img src="images/agent.png" style="height:80px; width:80px; ">
+                </div>
+                <div style="flex-shrink: 2;align-self: center;" id="agent">
+
+                    Are you an Admin? <a href='service/admin_login_view' color="red">Login Here</a><br>
+                    You will be taken to the Admin Dashboard.
+                </div>
+            
+            
+        </div>
+    </div>
+
+</div>

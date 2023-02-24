@@ -1,0 +1,50 @@
+
+
+    <div ng-controller="submitTicket">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+        <div style="text-align: center;margin-top:3vh;">
+            <h3>Submit a New Ticket</h3>
+        </div>
+        <div>
+            <form name="ticketForm"><!--   method="post"  action="customer_ticket_submit.php" enctype="multipart/form-data" -->
+                <div class="submit_ticket">
+                    <span style="color:red;" ng-show="ticketForm.ticket_title.$error.required">Please Enter A Title</span>
+                    <div><textarea name="ticket_title" ng-model="title" rows="1" cols="50" id="title" style="resize:none;" placeholder="Add a Title to your Ticket" required></textarea></div>
+                    <span style="color:red;" ng-show="ticketForm.ticket_title.$error.required">Please Enter A Description</span>
+                    <div style="flex-grow: 3;"><textarea ng-model = "description" name="ticket_description" rows="4" cols="50" id="description" required>Add a Description to your Ticket</textarea></div>
+                    <div><input type="file" id="myFile" name="file" ng-model="file" style="border:none;">
+                    <input type="submit" id="submit_ticket_button" ng-click ="submitTicket()" style="width:100px;margin-left:80px;border:solid 1px black;"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="flex-content" ng-controller="displayTickets">
+        <button ng-click="showTickets()" ng-show="!showTable">Display Previous Tickets</button>
+        <button ng-click="hideTickets()" ng-show="showTable">Hide Previous Tickets</button>
+        <table id='display_table' ng-show="showTable">
+            <thead>
+                <tr>
+                <th scope='col'>Ticket_id</th>
+                <th scope='col'>Ticket_Description</th>
+                <th scope='col'>Ticket_Status</th>
+                <th scope='col'>Ticket_Time</th>
+                <th scope='col'>Attachment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in rdata">
+                    <td scope='row'>{{x.Ticket_id}}</td>
+                    <td colspan='1'>{{x.Ticket_description}}</td>
+                    <td ng-if="x.Ticket_status==1">Submitted</td>
+                    <td ng-if="x.Ticket_status==2">In - Progress</td>
+                    <td ng-if="x.Ticket_status==3">Under Review</td>
+                    <td ng-if="x.Ticket_status==4">Soon to be Resolved</td>
+                    <td ng-if="x.Ticket_status==5">Resolved</td>
+                    <td>{{x.Time | date : "dd.MM.y"}}</td>
+                    <td ng-if="x.Ticket_file!=''"><a href= './Customer_uploads/{{x.Ticket_file}}' target='_blank'>View</a></td>
+                    <td ng-if="!(x.Ticket_file!='')">No Attachment</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
